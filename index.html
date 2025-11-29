@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>脉轮能量能力测试 · CyberShamaness</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+:root{
+  --bg: radial-gradient(circle at top, #1e293b 0, #020617 45%, #020617 100%);
+  --card: rgba(15,23,42,.92);
+  --accent: #a855f7;
+  --accent-soft: rgba(168,85,247,.18);
+  --text-main:#e5e7eb;
+  --text-sub:#9ca3af;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  padding:24px 14px 28px;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Yahei",sans-serif;
+  background:
+    radial-gradient(circle at 10% 0,#22d3ee11 0,transparent 55%),
+    radial-gradient(circle at 90% 10%,#f9731616 0,transparent 60%),
+    var(--bg);
+  color:var(--text-main);
+  line-height:1.7;
+}
+.wrap{
+  max-width:880px;
+  margin:0 auto;
+}
+.badge{
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  opacity:.85;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-bottom:6px;
+}
+.badge-dot{
+  width:7px;height:7px;border-radius:999px;
+  background:radial-gradient(circle,#f97316,#a855f7);
+  box-shadow:0 0 10px #f97316;
+}
+h1{
+  font-size:24px;
+  margin:4px 0 6px;
+}
+.sub{
+  font-size:13px;
+  color:var(--text-sub);
+  max-width:640px;
+}
+.tags{
+  margin-top:10px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+.tag{
+  font-size:11px;
+  padding:3px 10px;
+  border-radius:999px;
+  border:1px solid rgba(148,163,184,.7);
+  background:rgba(15,23,42,.75);
+}
+.card{
+  margin-top:18px;
+  background:linear-gradient(135deg,rgba(15,23,42,.96),rgba(17,24,39,.95));
+  border-radius:18px;
+  padding:16px 14px 18px;
+  box-shadow:0 24px 60px rgba(15,23,42,.9);
+  border:1px solid rgba(148,163,184,.35);
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background:
+    radial-gradient(circle at 15% 0,#f97316 0,transparent 48%),
+    radial-gradient(circle at 85% 10%,#22d3ee 0,transparent 52%),
+    radial-gradient(circle at 50% 130%,#a855f7 0,transparent 58%);
+  opacity:.18;
+  pointer-events:none;
+}
+.card-inner{position:relative;z-index:1;}
+.progress{
+  font-size:12px;
+  color:var(--text-sub);
+  margin-bottom:10px;
+  text-align:right;
+}
+.chakra-legend{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-bottom:10px;
+}
+.chip{
+  font-size:11px;
+  padding:2px 9px;
+  border-radius:999px;
+  border:1px solid rgba(148,163,184,.4);
+  background:rgba(15,23,42,.88);
+}
+.chip span{opacity:.75;}
+.question{
+  margin:14px 0 6px;
+  font-size:14px;
+  font-weight:600;
+}
+.option-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:4px;
+}
+.option-row label{
+  font-size:13px;
+  cursor:pointer;
+  opacity:.9;
+}
+.option-row input{margin-right:3px;}
+button{
+  margin-top:14px;
+  width:100%;
+  border:none;
+  padding:12px 16px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#a855f7,#ec4899);
+  color:#fff;
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  cursor:pointer;
+  box-shadow:0 18px 40px rgba(88,28,135,.85);
+  transform:translateY(0);
+  transition:transform .16s ease-out,box-shadow .16s ease-out,filter .16s ease-out;
+}
+button:active{
+  transform:translateY(1px) scale(.99);
+  box-shadow:0 10px 26px rgba(55,48,163,.9);
+  filter:brightness(.96);
+}
+.result{
+  margin-top:10px;
+  font-size:13px;
+  text-align:center;
+  opacity:.85;
+}
+.foot{
+  margin-top:18px;
+  font-size:11px;
+  opacity:.65;
+  text-align:center;
+}
+@media (min-width:768px){
+  body{padding:40px 24px 52px;}
+  h1{font-size:28px;}
+  .card{padding:20px 18px 22px;}
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="badge">
+      <span class="badge-dot"></span>
+      CYBERSHAMANESS · 脉轮能量能力测试
+    </div>
+
+    <h1>你的七大脉轮，哪一轮最醒着？</h1>
+    <p class="sub">
+      这不是玄学算命，而是通过 40 道题，观察你在安全感、情绪、意志、爱、表达、直觉与连接感上的能量分布，找到当前最需要你去照顾的那个“能量中心”。
+    </p>
+
+    <div class="tags">
+      <span class="tag">脉轮能量</span>
+      <span class="tag">情绪 × 身体 × 灵性</span>
+      <span class="tag">内在小孩</span>
+      <span class="tag">能量觉察</span>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="chakra-legend">
+          <span class="chip"><strong>① 海底轮</strong> <span>安全感 · 生存</span></span>
+          <span class="chip"><strong>② 脐轮</strong> <span>情绪 · 愉悦 · 亲密</span></span>
+          <span class="chip"><strong>③ 太阳神经丛</strong> <span>自信 · 意志</span></span>
+          <span class="chip"><strong>④ 心轮</strong> <span>爱与被爱</span></span>
+          <span class="chip"><strong>⑤ 喉轮</strong> <span>表达与真相</span></span>
+          <span class="chip"><strong>⑥ 眉心轮</strong> <span>直觉 · 洞察</span></span>
+          <span class="chip"><strong>⑦ 顶轮</strong> <span>连接感 · 意义感</span></span>
+        </div>
+
+        <div class="progress" id="progress"></div>
+        <div id="test"></div>
+        <button onclick="showResult()">查看我的脉轮能量焦点</button>
+        <div class="result" id="result"></div>
+      </div>
+    </div>
+
+    <div class="foot">
+      本测试仅用于自我觉察与成长参考，不构成任何医疗或诊断意见。<br>
+      CyberShamaness · 能量与心灵脚本实验室
+    </div>
+  </div>
+
+<script>
+// 40 题：每题对应某一脉轮
+// root, sacral, solar, heart, throat, thirdEye, crown
+const questions = [
+  // 1-6：海底轮 Root
+  "做决定时，我很容易感到不安全、没底气。",
+  "我经常担心钱、未来、生存层面的事情。",
+  "我的身体常常紧绷，很难完全放松下来。",
+  "压力大时，我会暴饮暴食，或完全没有胃口。",
+  "我容易腰酸、腿软、脚冷，觉得“下盘”不稳。",
+  "遇到搬家、换工作等变化时，我会异常焦虑。",
+
+  // 7-12：脐轮 Sacral
+  "我很难真正享受快乐和愉悦，经常有负罪感或内疚感。",
+  "我对亲密、欲望、身体话题会感到害羞或抗拒。",
+  "我容易因为别人情绪而大起大落，像被人“牵着走”。",
+  "有一段时间，我会完全失去创造欲或表达欲。",
+  "我有时感觉自己“没有感觉”，像被按了静音键。",
+  "我很难拒绝别人对我的情绪或身体的占用。",
+
+  // 13-18：太阳神经丛 Solar
+  "我常常觉得自己“不够好、不够有用、不够厉害”。",
+  "我很难坚持自己的选择，很容易被别人的意见带走。",
+  "面对冲突，我要么突然爆发，要么完全退缩躲开。",
+  "我非常害怕被否定或被评价不好。",
+  "我很难发自内心地说：“我值得更好的。”",
+  "失败或犯错时，我会在心里把自己骂得很惨。",
+
+  // 19-24：心轮 Heart
+  "我很难真正相信：有人会持续稳定地爱我。",
+  "即使在一段关系里，我也经常感到孤独。",
+  "别人一有一点疏远，我就会怀疑是不是自己做错了什么。",
+  "我对自己比对别人严格、残忍得多。",
+  "我很少对人说“我需要你”或“我其实很难过”。",
+  "想到某些过去的人或事时，我仍然会隐隐心痛。",
+
+  // 25-30：喉轮 Throat
+  "我经常“话到嘴边又咽回去”。",
+  "我害怕表达真实想法会引起冲突或被讨厌。",
+  "在重要场合发言时，我喉咙会紧、呼吸变浅。",
+  "我习惯说“都可以”“听你的”，而不是直接说自己想要什么。",
+  "别人误会我时，我常常选择沉默或放弃解释。",
+  "我有很多想法，但很少真正说出来或做出来。",
+
+  // 31-35：眉心轮 Third Eye
+  "做选择时，我经常纠结，看不清自己真正想要什么。",
+  "事情结束很久，我的大脑还在反复回放各种版本。",
+  "我经常陷入脑内小剧场，很难停下过度思考。",
+  "我不太信任自己的直觉，总怕判断错误。",
+  "有时候我觉得人生像自动运行，而我只是旁观者。",
+
+  // 36-40：顶轮 Crown
+  "我时不时会突然问自己：我到底在这里干嘛？",
+  "当生活很忙乱时，我很难感觉到内心安静。",
+  "我很少有“被某种更大的东西托住”的感觉。",
+  "在迷茫时，我很难向外或向上求助，只会一个人扛。",
+  "当我一个人的时候，我常感觉自己被切断、没有连接感。"
+];
+
+// 每道题对应的脉轮类型
+const typeMap = [
+  "root","root","root","root","root","root",
+  "sacral","sacral","sacral","sacral","sacral","sacral",
+  "solar","solar","solar","solar","solar","solar",
+  "heart","heart","heart","heart","heart","heart",
+  "throat","throat","throat","throat","throat","throat",
+  "thirdEye","thirdEye","thirdEye","thirdEye","thirdEye",
+  "crown","crown","crown","crown","crown"
+];
+
+const chakraLabel = {
+  root: "海底轮 · 安全感与生存",
+  sacral: "脐轮 · 情绪与愉悦",
+  solar: "太阳神经丛 · 自信与意志",
+  heart: "心轮 · 爱与连结",
+  throat: "喉轮 · 表达与真相",
+  thirdEye: "眉心轮 · 直觉与洞察",
+  crown: "顶轮 · 连接与意义"
+};
+
+// 渲染题目
+let html = "";
+for(let i=0;i<questions.length;i++){
+  html += `
+  <div class="question">${i+1}. ${questions[i]}</div>
+  <div class="option-row">
+    <label><input type="radio" name="q${i}" value="3"> 非常符合</label>
+    <label><input type="radio" name="q${i}" value="2"> 比较符合</label>
+    <label><input type="radio" name="q${i}" value="1"> 偶尔符合</label>
+    <label><input type="radio" name="q${i}" value="0"> 不太符合 / 完全不符合</label>
+  </div>
+  `;
+}
+document.getElementById("test").innerHTML = html;
+document.getElementById("progress").innerText =
+  `共 ${questions.length} 题 · 建议用 5 分钟认真作答`;
+
+function showResult(){
+  let scoreRoot = 0,
+      scoreSacral = 0,
+      scoreSolar = 0,
+      scoreHeart = 0,
+      scoreThroat = 0,
+      scoreThirdEye = 0,
+      scoreCrown = 0;
+  let answered = 0;
+
+  for(let i=0;i<questions.length;i++){
+    const checked = document.querySelector(`input[name="q${i}"]:checked`);
+    if(checked){
+      answered++;
+      const v = parseInt(checked.value, 10);
+      const t = typeMap[i];
+      if(t === "root") scoreRoot += v;
+      else if(t === "sacral") scoreSacral += v;
+      else if(t === "solar") scoreSolar += v;
+      else if(t === "heart") scoreHeart += v;
+      else if(t === "throat") scoreThroat += v;
+      else if(t === "thirdEye") scoreThirdEye += v;
+      else if(t === "crown") scoreCrown += v;
+    }
+  }
+
+  if(answered < questions.length * 0.7){
+    alert("还有不少题没做完哦～\n至少完成 70% 再看结果，才更接近你的真实状态。");
+    return;
+  }
+
+  const scores = [
+    {key:"root", value:scoreRoot},
+    {key:"sacral", value:scoreSacral},
+    {key:"solar", value:scoreSolar},
+    {key:"heart", value:scoreHeart},
+    {key:"throat", value:scoreThroat},
+    {key:"thirdEye", value:scoreThirdEye},
+    {key:"crown", value:scoreCrown}
+  ].sort((a,b)=>b.value - a.value);
+
+  const top = scores[0];
+
+  document.getElementById("result").innerHTML =
+    "你的脉轮能量格局已生成 ✅<br>正在为你打开最需要关注的那个能量中心…";
+
+  setTimeout(()=>{
+    // 假设 report.html 与本页在同一目录
+    window.location.href = `report.html?chakra=${encodeURIComponent(top.key)}&score=${top.value}`;
+  }, 1300);
+}
+</script>
+</body>
+</html>
