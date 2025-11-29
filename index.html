@@ -1,222 +1,404 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />
-<title>脉轮觉醒度测试 · CyberShamaness</title>
-
-<!-- ======= STYLE ======= -->
-<style>
-  body{
-    margin:0;
-    padding:0;
-    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
-    background:#0d0a22;
-    color:#fff;
-    line-height:1.65;
-    background: radial-gradient(circle at 50% 20%,rgba(149,124,255,.25),rgba(76,58,146,.2) 20%,rgba(15,11,39,1) 70%);
-    padding:26px 16px 80px;
-  }
-  .wrap{max-width:760px;margin:0 auto;}
-  h1{text-align:center;font-size:28px;margin-bottom:10px;font-weight:700;}
-
-  .sub{text-align:center;font-size:14px;opacity:.75;margin-bottom:18px;}
-
-  .badge{
-    text-align:center;
-    font-size:12px;
-    opacity:.7;
-    margin-bottom:12px;
-    letter-spacing:1px;
-  }
-
-  .card{
-    background:rgba(255,255,255,0.06);
-    border:1px solid rgba(255,255,255,0.08);
-    box-shadow:0 0 28px rgba(86,62,190,.25);
-    backdrop-filter:blur(8px);
-    border-radius:16px;
-    padding:20px 20px 28px;
-  }
-
-  .question{
-    margin:14px 0 8px;
-    font-weight:600;
-    font-size:15px;
-  }
-
-  label{
-    display:block;
-    margin:4px 0;
-    padding:6px 8px;
-    border-radius:8px;
-    background:rgba(255,255,255,0.03);
-    cursor:pointer;
-  }
-  input[type=radio]{margin-right:6px;}
-
-  button{
-    width:100%;
-    margin-top:18px;
-    padding:14px 18px;
-    border:none;
-    border-radius:999px;
-    background:linear-gradient(135deg,#a477ff,#6d4bff,#5737ff);
-    color:#fff;
-    font-size:16px;
-    letter-spacing:1px;
-    cursor:pointer;
-    box-shadow:0 8px 26px rgba(103,64,255,.55);
-    transition:.2s;
-  }
-  button:hover{
-    transform:translateY(-2px);
-    box-shadow:0 12px 28px rgba(124,84,255,.75);
-  }
-
-  .progress{text-align:center;margin-bottom:12px;font-size:13px;opacity:.8;}
-  .result{text-align:center;margin-top:12px;font-size:14px;opacity:.85;}
-
-  .foot{
-    margin-top:20px;
-    text-align:center;
-    opacity:.45;
-    font-size:11px;
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>CYBERSHAMANESS · 七大脉轮觉醒测试</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      min-height:100vh;
+      font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+      color:#e5e7f8;
+      /* 彩色星空背景 */
+      background:
+        radial-gradient(circle at 10% 0%,rgba(129,140,248,.25),transparent 55%),
+        radial-gradient(circle at 90% 0%,rgba(244,114,182,.30),transparent 55%),
+        radial-gradient(circle at 50% 100%,rgba(45,212,191,.28),transparent 55%),
+        #020617;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px 12px;
+      position:relative;
+      overflow-x:hidden;
+    }
+    /* 你的脉轮图作为背景叠加：把图片保存成 chakra-bg.jpg 放在同一文件夹 */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:url("chakra-bg.jpg") center/cover no-repeat;
+      opacity:.16;
+      mix-blend-mode:screen;
+      pointer-events:none;
+      z-index:-1;
+    }
+    .wrap{
+      width:100%;
+      max-width:900px;
+      background:rgba(15,23,42,.86);
+      border-radius:26px;
+      box-shadow:0 30px 120px rgba(15,23,42,.95);
+      backdrop-filter:blur(26px);
+      border:1px solid rgba(148,163,184,.35);
+      padding:22px 20px 26px;
+      position:relative;
+      overflow:hidden;
+    }
+    .wrap::after{
+      content:"";
+      position:absolute;
+      width:460px;
+      height:460px;
+      border-radius:999px;
+      background:radial-gradient(circle,rgba(129,140,248,.35),transparent 60%);
+      right:-140px;
+      top:-140px;
+      filter:blur(2px);
+      opacity:.8;
+      pointer-events:none;
+    }
+    .badge{
+      font-size:11px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:#a5b4fc;
+      display:flex;
+      align-items:center;
+      gap:6px;
+      margin-bottom:8px;
+    }
+    .badge-dot{
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      background:conic-gradient(from 160deg,#f97316,#ef4444,#ec4899,#6366f1,#22c55e,#facc15,#f97316);
+      box-shadow:0 0 14px rgba(251,191,36,.85);
+    }
+    h1{
+      font-size:24px;
+      font-weight:700;
+      margin-bottom:6px;
+      color:#f9fafb;
+    }
+    .sub{
+      font-size:13px;
+      color:#cbd5f5;
+      max-width:540px;
+      line-height:1.6;
+      margin-bottom:10px;
+    }
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      margin-bottom:14px;
+      font-size:11px;
+    }
+    .chip{
+      padding:3px 10px;
+      border-radius:999px;
+      background:rgba(79,70,229,.15);
+      border:1px solid rgba(129,140,248,.6);
+      color:#e0e7ff;
+    }
+    .meta{
+      font-size:11px;
+      color:#9ca3cfd9;
+      margin-bottom:14px;
+    }
+    .meta strong{color:#e5e7ff;}
+    .meta span{
+      padding:2px 8px;
+      border-radius:999px;
+      background:rgba(15,23,42,.85);
+      border:1px solid rgba(148,163,184,.55);
+      margin-right:4px;
+    }
+    .card{
+      margin-top:4px;
+      background:linear-gradient(135deg,rgba(15,23,42,.92),rgba(15,23,42,.88));
+      border-radius:18px;
+      padding:16px 16px 18px;
+      border:1px solid rgba(148,163,184,.55);
+      box-shadow:0 18px 60px rgba(15,23,42,.85);
+      position:relative;
+      overflow:hidden;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(145deg,rgba(129,140,248,.16),transparent 55%,rgba(244,114,182,.22));
+      opacity:.8;
+      pointer-events:none;
+    }
+    .progress{
+      font-size:11px;
+      color:#e5e7ff;
+      margin-bottom:8px;
+      position:relative;
+      z-index:1;
+    }
+    .progress strong{color:#c4b5fd;}
+    #test{
+      position:relative;
+      z-index:1;
+      max-height:62vh;
+      overflow-y:auto;
+      padding-right:2px;
+    }
+    #test::-webkit-scrollbar{
+      width:5px;
+    }
+    #test::-webkit-scrollbar-thumb{
+      background:rgba(148,163,184,.7);
+      border-radius:999px;
+    }
+    .question{
+      margin-top:12px;
+      font-size:14px;
+      font-weight:500;
+      color:#e5e7ff;
+    }
+    .options{
+      margin-top:4px;
+      margin-bottom:2px;
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:4px 16px;
+      font-size:13px;
+      color:#cbd5f5;
+    }
+    label{
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+    input[type="radio"]{
+      accent-color:#6366f1;
+      cursor:pointer;
+    }
+    button{
+      margin-top:14px;
+      width:100%;
+      padding:12px 18px;
+      border-radius:999px;
+      border:none;
+      cursor:pointer;
+      font-size:14px;
+      font-weight:600;
+      letter-spacing:.02em;
+      color:#f9fafb;
+      background:linear-gradient(135deg,#6366f1,#8b5cf6,#ec4899);
+      box-shadow:0 16px 40px rgba(129,140,248,.7);
+      position:relative;
+      z-index:1;
+      transition:transform .2s ease,box-shadow .2s ease,filter .2s ease;
+    }
+    button:hover{
+      filter:brightness(1.06);
+      box-shadow:0 20px 52px rgba(129,140,248,.95);
+      transform:translateY(-1px);
+    }
+    button:active{
+      transform:translateY(1px) scale(.99);
+      box-shadow:0 10px 26px rgba(79,70,229,.9);
+      filter:brightness(.95);
+    }
+    .result{
+      margin-top:8px;
+      font-size:12px;
+      text-align:center;
+      opacity:.85;
+      color:#cbd5f5;
+    }
+    .foot{
+      margin-top:12px;
+      font-size:11px;
+      opacity:.7;
+      text-align:center;
+      color:#94a3b8;
+    }
+    @media (min-width:768px){
+      body{padding:36px;}
+      h1{font-size:26px;}
+      .wrap{padding:24px 24px 28px;}
+      .card{padding:18px 18px 20px;}
+    }
+  </style>
 </head>
-
 <body>
 <div class="wrap">
-
-  <div class="badge">CYBERSHAMANESS · CHAKRA AWAKENING TEST</div>
+  <div class="badge">
+    <span class="badge-dot"></span>
+    CYBERSHAMANESS · CHAKRA AWAKENING TEST
+  </div>
 
   <h1>你的七大脉轮，觉醒到第几层？</h1>
-  <p class="sub">40 题深度测评 · 自动分析你的 7 个脉轮能量 | 根轮 · 生殖轮 · 太陽神经丛 · 心轮 · 喉轮 · 眉心轮 · 顶轮</p>
+  <p class="sub">
+    40 道深度心测，自动分析你 7 个脉轮的能量分布：根轮 · 生殖轮 · 太阳丛轮 · 心轮 · 喉轮 · 眉心轮 · 顶轮，
+    看看你目前的灵性“发动机”哪里最在线，哪里需要温柔修复。
+  </p>
+
+  <div class="chips">
+    <span class="chip">能量觉醒</span>
+    <span class="chip">原生家庭 × 情绪模式</span>
+    <span class="chip">直觉 · 愿景 · 灵性对齐</span>
+  </div>
+
+  <div class="meta">
+    <span><strong>共 40 题</strong> · 建议用 5 分钟安静完成</span>
+  </div>
 
   <div class="card">
     <div class="progress" id="progress"></div>
-
     <div id="test"></div>
-
-    <button onclick="showResult()">查看我的脉轮觉醒度</button>
-
+    <button onclick="showResult()">生成我的脉轮能量地图</button>
     <div class="result" id="result"></div>
   </div>
 
-  <div class="foot">CyberShamaness · 灵性系统测试</div>
+  <div class="foot">
+    本测试仅用于自我觉察，不构成临床诊断。<br>
+    CyberShamaness · 灵性体验工作室
+  </div>
 </div>
 
-<!-- ======= SCRIPT ======= -->
 <script>
-// ===== 40 题，每题归属 7 个脉轮之一 =====
-// ROOT = 根轮, SAC = 生殖轮, SOL = 太陽神经丛, HEART = 心轮, THROAT = 喉轮, THIRD = 眉心, CROWN = 顶轮
+  // 7 个脉轮 Key
+  const chakraKeys = ["root","sacral","solar","heart","throat","third","crown"];
 
-const questions = [
-  // ROOT 根轮（稳定、安全、生存）
-  ["我经常感到不踏实，好像生活随时会出问题","ROOT"],
-  ["我对金钱和生活保障感到焦虑","ROOT"],
-  ["我很难真正放松身体","ROOT"],
-  ["我常觉得自己没有根，没有归属","ROOT"],
-  ["压力大时，我身体会紧绷、僵硬","ROOT"],
-  ["我容易对未来感到恐惧","ROOT"],
+  // 40 道题
+  const questions = [
+    // Root 根轮
+    "我经常对金钱或生存感到隐隐的不安全感",
+    "我很难长期坚持规律的作息或生活节奏",
+    "当现实出现变化时，我会马上紧张、很难放松身体",
+    "我有时会觉得自己“站不稳脚跟”，难以安定下来",
+    "我偶尔会感觉跟自己的身体有点疏离，不太在当下",
+    // Sacral 生殖轮
+    "我的情绪比较敏感、起伏明显，很容易被触动",
+    "我一方面渴望亲密，一方面又害怕太靠近别人",
+    "我经常有创作欲望，但很难长期保持灵感输出",
+    "享受快乐的时候，我会隐约觉得有点“有罪感”",
+    "我很难拒绝自己喜欢的人或事情，即使已经有点过量",
+    // Solar 太阳丛
+    "我习惯控制局面，喜欢所有事都有计划、在掌控中",
+    "遇到权威或强势的人时，我会下意识地退缩",
+    "只要事情很重要，我就特别容易拖延、下不了决心开始",
+    "一旦出错，我会反复在脑内批评自己，难以放过自己",
+    "我有时会突然爆发情绪，之后又很后悔",
+    // Heart 心轮
+    "我觉得要真正信任一个人并不容易",
+    "我习惯照顾别人，却很少认真照顾自己的感受",
+    "即使身边有人，我也常常有一点孤独感",
+    "直接表达爱意或脆弱对我来说有点困难",
+    "向别人求助时，我会担心自己是不是很麻烦",
+    // Throat 喉轮
+    "我常常把真正想说的话咽下去，怕引发冲突",
+    "我有时说话太快、太多，结束后会懊恼没说到重点",
+    "在很多人面前讲话会让我明显紧张",
+    "我经常觉得嗓子有点紧，或者不自主地清嗓子",
+    "遇到重要沟通时，我更想发消息而不是当面说",
+    // Third eye 眉心轮
+    "我经常会预想很多未来的可能场景，脑内小剧场很多",
+    "我喜欢观察模式、分析事情背后的动机和意义",
+    "我偶尔会突然有很强的直觉“就是这样”，但很难解释原因",
+    "我有时会强烈怀疑自己的判断，难以相信直觉",
+    "我偶尔会觉得这世界像一场梦，现实感有些飘忽",
+    // Crown 顶轮
+    "我对灵性、哲学或“生命意义”这类话题非常感兴趣",
+    "我偶尔会有一种“自己和整个宇宙是连在一起”的感觉",
+    "我觉得自己来这一生是有某种使命的，只是还没完全想清楚",
+    "当处在能量很“沉重”的环境里时，我会很快被耗干",
+    "我需要比一般人更多的独处时间，来让自己“充电”",
+    // 额外的 5 题，用来平衡各脉轮题量
+    "只要待在自然里（公园、山、水边），我就明显更踏实",
+    "我最近很难从日常小事中感到真正的愉悦和活力",
+    "工作和成就对我来说几乎等同于“我值不值得被爱”",
+    "我发现自己很难真正地原谅自己或别人",
+    "最近一段时间，我感觉自己和灵感 / 信念有点“断线”"
+  ];
 
-  // SAC 生殖轮（情绪、创造力、关系）
-  ["我渴望被理解，但又害怕表达真实情绪","SAC"],
-  ["我经常压抑自己的欲望或快乐","SAC"],
-  ["我对亲密关系既渴望又抗拒","SAC"],
-  ["我在创造方面时常感觉被卡住","SAC"],
-  ["我对自己的身体不够接纳","SAC"],
-  ["我难以顺畅表达自己的需求","SAC"],
+  // 每题对应的脉轮 key
+  const typeMap = [
+    // root x6（前 5 + 36）
+    "root","root","root","root","root",
+    // sacral x5（6~10）+37
+    "sacral","sacral","sacral","sacral","sacral",
+    // solar x5 +38
+    "solar","solar","solar","solar","solar",
+    // heart x5 +39
+    "heart","heart","heart","heart","heart",
+    // throat x5
+    "throat","throat","throat","throat","throat",
+    // third x5
+    "third","third","third","third","third",
+    // crown x5 +40
+    "crown","crown","crown","crown","crown",
+    // extra 5
+    "root",   // 自然更踏实 -> root
+    "sacral", // 难感到愉悦 -> sacral
+    "solar",  // 成就=价值 -> solar
+    "heart",  // 难以原谅 -> heart
+    "crown"   // 信念断线 -> crown
+  ];
 
-  // SOL 太阳神经丛（自信、自我价值）
-  ["我经常怀疑自己的能力","SOL"],
-  ["我做决定时容易犹豫","SOL"],
-  ["我害怕被评价、害怕失败","SOL"],
-  ["我常常觉得自己“不够好”","SOL"],
-  ["我很难坚定地表达立场","SOL"],
-  ["我容易被他人影响情绪","SOL"],
-
-  // HEART 心轮（爱、共情、疗愈）
-  ["我很难毫无保留地接受别人对我的好","HEART"],
-  ["我常常感觉心被堵住，很难信任别人","HEART"],
-  ["我在关系中经常退缩","HEART"],
-  ["我很少把爱给自己","HEART"],
-  ["我容易因为别人一点小事就受伤","HEART"],
-  ["我对亲密有恐惧感","HEART"],
-
-  // THROAT 喉轮（表达、沟通、真我）
-  ["我表达真实想法时会紧张","THROAT"],
-  ["我经常说违背心里的话来迎合别人","THROAT"],
-  ["我在冲突中会选择沉默","THROAT"],
-  ["我不太敢说“不”","THROAT"],
-  ["我有很多话想说，但说出口很难","THROAT"],
-  ["我经常觉得自己被误解","THROAT"],
-
-  // THIRD 眉心轮（洞察、直觉）
-  ["我直觉很强，但不敢相信它","THIRD"],
-  ["我经常莫名感到疲倦或混乱","THIRD"],
-  ["我对世界充满好奇，但感到迷茫","THIRD"],
-  ["我容易被别人的能量影响","THIRD"],
-  ["我很难稳定地专注","THIRD"],
-  ["我对命运、象征、同步性特别敏感","THIRD"],
-
-  // CROWN 顶轮（灵性、意识、宇宙连结）
-  ["我经常思考生命意义","CROWN"],
-  ["我对物质世界容易失望","CROWN"],
-  ["我常有强烈的“我不属于这里”的感觉","CROWN"],
-  ["我会突然感到强烈的空虚或虚无","CROWN"],
-  ["我对精神层面的内容非常敏感","CROWN"],
-  ["我渴望成为更高版本的自己","CROWN"]
-];
-
-// ===== 生成题目 =====
-let html = "";
-for(let i=0;i<questions.length;i++){
-  html += `
-  <div class="question">${i+1}. ${questions[i][0]}</div>
-  <label><input type="radio" name="q${i}" value="3"> 非常符合</label>
-  <label><input type="radio" name="q${i}" value="2"> 比较符合</label>
-  <label><input type="radio" name="q${i}" value="1"> 偶尔符合</label>
-  <label><input type="radio" name="q${i}" value="0"> 不符合</label>
-  `;
-}
-document.getElementById("test").innerHTML = html;
-document.getElementById("progress").innerText = `共 ${questions.length} 题 · 建议用 5 分钟完成`;
-
-// ===== 计算结果并跳转 =====
-function showResult(){
-  let answered = 0;
-
-  const chakraScore = {
-    ROOT:0, SAC:0, SOL:0, HEART:0,
-    THROAT:0, THIRD:0, CROWN:0
-  };
-
+  // 渲染题目
+  let html = "";
   for(let i=0;i<questions.length;i++){
-    const checked = document.querySelector(`input[name="q${i}"]:checked`);
-    if(checked){
-      answered++;
-      const val = parseInt(checked.value);
-      const cat = questions[i][1];
-      chakraScore[cat] += val;
+    html += `
+      <div class="question">${i+1}. ${questions[i]}</div>
+      <div class="options">
+        <label><input type="radio" name="q${i}" value="3"> 非常符合</label>
+        <label><input type="radio" name="q${i}" value="2"> 比较符合</label>
+        <label><input type="radio" name="q${i}" value="1"> 偶尔符合</label>
+        <label><input type="radio" name="q${i}" value="0"> 不太符合 / 完全不符合</label>
+      </div>
+    `;
+  }
+  document.getElementById("test").innerHTML = html;
+  document.getElementById("progress").innerHTML =
+    `<strong>已加载 ${questions.length} 题</strong> · 建议用 3～5 分钟慢慢作答`;
+
+  // 计算结果并跳转
+  function showResult(){
+    let answered = 0;
+    const chakraScore = {};
+    const chakraMax = {};
+    chakraKeys.forEach(k => {chakraScore[k]=0; chakraMax[k]=0;});
+
+    for(let i=0;i<questions.length;i++){
+      const checked = document.querySelector(`input[name="q${i}"]:checked`);
+      const key = typeMap[i];
+      chakraMax[key] += 3; // 每题满分 3
+      if(checked){
+        answered++;
+        chakraScore[key] += parseInt(checked.value);
+      }
     }
+
+    if(answered < questions.length * 0.7){
+      alert("还有不少题没有作答～\n至少完成 70% 再看结果，才更接近你当下的真实能量状态。");
+      return;
+    }
+
+    // 转换成 0-100 分，并拼到 URL
+    const params = new URLSearchParams();
+    chakraKeys.forEach(k=>{
+      const pct = chakraMax[k] ? Math.round(chakraScore[k] / chakraMax[k] * 100) : 0;
+      params.set(k,pct);
+    });
+
+    document.getElementById("result").innerHTML =
+      "你的脉轮能量正在汇总中 ✨ 正在跳转到完整报告…";
+
+    setTimeout(()=>{
+      window.location.href = "report.html?" + params.toString();
+    },1200);
   }
-
-  if(answered < questions.length * 0.7){
-    alert("请至少完成 70% 题目再查看结果。");
-    return;
-  }
-
-  document.getElementById("result").innerHTML =
-    "正在生成你的 7 脉轮能量图谱…";
-
-  setTimeout(()=>{
-    const params = new URLSearchParams(chakraScore).toString();
-    window.location.href = `report.html?${params}`;
-  }, 1200);
-}
 </script>
-
 </body>
 </html>
