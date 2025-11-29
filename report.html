@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>脉轮能量能力测试 · 结果报告</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+:root{
+  --bg: radial-gradient(circle at top, #020617 0, #020617 45%, #020617 100%);
+  --card: rgba(15,23,42,.95);
+  --text-main:#e5e7eb;
+  --text-sub:#9ca3af;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  padding:22px 14px 28px;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Yahei",sans-serif;
+  background:
+    radial-gradient(circle at 10% -10%,#22d3ee22 0,transparent 55%),
+    radial-gradient(circle at 90% 0,#f9731622 0,transparent 55%),
+    radial-gradient(circle at 50% 125%,#a855f722 0,transparent 60%),
+    #020617;
+  color:var(--text-main);
+  line-height:1.8;
+}
+.wrap{
+  max-width:880px;
+  margin:0 auto;
+  position:relative;
+}
+.card{
+  margin-top:6px;
+  background:radial-gradient(circle at top,#0f172a,#020617);
+  border-radius:22px;
+  padding:18px 16px 22px;
+  box-shadow:0 26px 70px rgba(15,23,42,.95);
+  border:1px solid rgba(148,163,184,.4);
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background:
+    radial-gradient(circle at 15% 0,#f97316 0,transparent 52%),
+    radial-gradient(circle at 85% 10%,#22d3ee 0,transparent 56%),
+    radial-gradient(circle at 50% 130%,#a855f7 0,transparent 60%);
+  opacity:.20;
+  pointer-events:none;
+}
+.inner{position:relative;z-index:1;}
+.badge{
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  opacity:.85;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-bottom:6px;
+}
+.badge-dot{
+  width:7px;height:7px;border-radius:999px;
+  background:radial-gradient(circle,#f97316,#a855f7);
+  box-shadow:0 0 12px #f97316;
+}
+h1{
+  font-size:22px;
+  margin:4px 0 4px;
+}
+.sub{
+  font-size:13px;
+  color:var(--text-sub);
+  margin-bottom:8px;
+}
+.pill-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-bottom:10px;
+}
+.pill{
+  font-size:11px;
+  padding:3px 9px;
+  border-radius:999px;
+  border:1px solid rgba(148,163,184,.5);
+  background:rgba(15,23,42,.9);
+}
+.main-tag{
+  font-size:12px;
+  padding:4px 11px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-weight:500;
+}
+.main-tag span.dot{
+  width:8px;height:8px;border-radius:999px;
+}
+.main-tag.root span.dot{background:#fb7185;box-shadow:0 0 12px #fb7185;}
+.main-tag.sacral span.dot{background:#f97316;box-shadow:0 0 12px #f97316;}
+.main-tag.solar span.dot{background:#facc15;box-shadow:0 0 12px #facc15;}
+.main-tag.heart span.dot{background:#4ade80;box-shadow:0 0 12px #4ade80;}
+.main-tag.throat span.dot{background:#38bdf8;box-shadow:0 0 12px #38bdf8;}
+.main-tag.thirdEye span.dot{background:#a855f7;box-shadow:0 0 12px #a855f7;}
+.main-tag.crown span.dot{background:#e5e7eb;box-shadow:0 0 12px #e5e7eb;}
+
+.section{
+  margin-top:14px;
+  padding-top:10px;
+  border-top:1px dashed rgba(75,85,99,.7);
+}
+.section h2{
+  font-size:17px;
+  margin:0 0 6px;
+}
+.section p{
+  font-size:14px;
+  margin:5px 0;
+}
+ul{margin:4px 0 6px 1.1em;padding:0;}
+li{font-size:13px;color:var(--text-sub);margin:3px 0;}
+.highlight{color:#e5e7eb;font-weight:500;}
+.btn-row{
+  margin-top:14px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.btn{
+  text-decoration:none;
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:13px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  cursor:pointer;
+}
+.btn-main{
+  background:linear-gradient(135deg,#a855f7,#ec4899);
+  color:#fff;
+  border:none;
+}
+.btn-ghost{
+  border:1px solid rgba(148,163,184,.7);
+  color:var(--text-sub);
+  background:rgba(15,23,42,.8);
+}
+.footer{
+  margin-top:18px;
+  font-size:11px;
+  text-align:center;
+  color:var(--text-sub);
+}
+.brand{
+  margin-top:6px;
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:#c4b5fd;
+}
+.brand span.logo{
+  color:#a855f7;
+  font-weight:600;
+}
+@media (min-width:768px){
+  body{padding:40px 24px 52px;}
+  h1{font-size:24px;}
+  .card{padding:20px 18px 24px;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="inner" id="report-root">
+      <!-- JS 渲染内容 -->
+    </div>
+  </div>
+
+  <div class="footer">
+    这份报告只代表你当前阶段的能量状态，不是命运判决。觉察到哪里，光就会照到哪里。<br>
+    <div class="brand">
+      <span class="logo">CyberShamaness</span> · Chakra Energy Mapping Lab
+    </div>
+  </div>
+</div>
+
+<script>
+function getChakraFromQuery(){
+  const sp = new URLSearchParams(window.location.search);
+  const c = (sp.get("chakra") || "root");
+  const valid = ["root","sacral","solar","heart","throat","thirdEye","crown"];
+  return valid.includes(c) ? c : "root";
+}
+
+const DATA = {
+  root: {
+    name: "海底轮 · Root Chakra",
+    tagLine: "安全感 · 生存 · 身体的“我在这里”",
+    tone: "你最近的能量焦点，很大一部分落在“我到底安不安全”“我能不能撑得住”这些议题上。",
+    mainClass:"root",
+    summary: "海底轮是所有脉轮的地基。当这里长期紧张或失衡，我们就会很难真正放松下来，总觉得随时会掉下去。",
+    keywords:["安全感","金钱与生存","身体紧绷","焦虑和恐惧"],
+    youFeel:[
+      "很难彻底放松，好像随时要应对什么突发情况。",
+      "要么一直忙，要么一停下来就感到心慌、空虚。",
+      "对钱、未来、稳定感到焦虑，很难放心享受当下。",
+      "身体下半部容易出问题，比如腰酸、腿软、下盘无力。"
+    ],
+    pattern:[
+      "更习惯“先担心再说”，很难相信事情可以顺利发展。",
+      "即使手上有资源，也容易觉得不够、不踏实。",
+      "遇到环境变化（搬家、换工作、换城市）时，会格外不安。",
+      "你会用吃东西、刷手机、工作过度来安抚内在不安。"
+    ],
+    bodyHints:[
+      "经常感觉脚冷、腿发软，或莫名其妙地疲惫。",
+      "长期紧绷、睡眠质量不佳，醒来依旧累。",
+      "容易出现肠胃、下背部、髋部的不适感。",
+      "一旦压力大，身体反应特别快。"
+    ],
+    practice:[
+      "把注意力带回身体：每天花 3 分钟，只做一件事——感受脚底接触地面的感觉。",
+      "尽量规律作息，让身体知道“我每天都安安稳稳地醒来和入睡”。",
+      "列一张“已经拥有的稳定来源清单”（人、资源、空间），提醒自己：我并不是完全赤手空拳。",
+      "每晚睡前，对身体默念一句：“辛苦你今天撑住了，明天我会更好地照顾你。”"
+    ],
+    gentleWords: "你不是“太敏感”，你只是一个一直在努力维持地基的人。慢慢地，当你允许自己被地面接住，你也会发现，自己不需要再一直这么用力地硬撑。"
+  },
+
+  sacral: {
+    name: "脐轮 · Sacral Chakra",
+    tagLine: "情绪 · 感受 · 愉悦与亲密",
+    tone: "你的能量强烈地和“情绪波动、亲密关系、愉悦感”相连。",
+    mainClass:"sacral",
+    summary: "脐轮代表我们“允许自己感受”的能力。当这里卡住时，要么情绪泛滥，要么感觉迟钝，好像连“开心”和“不开心”都分不清。",
+    keywords:["情绪起伏","亲密与性","愉悦感","创意与欲望"],
+    youFeel:[
+      "别人情绪一变，你的内心马上跟着起伏，很难保持自己的节奏。",
+      "一方面渴望亲密，一方面对亲密或身体话题有羞耻、抗拒和矛盾。",
+      "有时会觉得自己像被抽干了，创作欲、表达欲都消失。",
+      "快乐来得很短暂，负罪感或空虚感来得很快。"
+    ],
+    pattern:[
+      "会下意识把自己放在“照顾者”的位置，为他人的情绪负责。",
+      "用吃东西、刷剧、短视频来填补内在空洞，却难以真正满足。",
+      "极易被有强烈情绪的人吸引或拖累，难以保持边界。",
+      "在欲望、亲密、身体感受这些议题上，容易有羞耻或压抑。"
+    ],
+    bodyHints:[
+      "下腹部、骨盆区域容易紧绷、冰冷或有不适。",
+      "对生理周期（如果有）或荷尔蒙变化特别敏感。",
+      "在高压时期，对食物、性、酒精、购物的依赖会变强或变弱。",
+      "身体很少体验到那种“纯粹、放心的开心感”。"
+    ],
+    practice:[
+      "每天给自己一个小小的愉悦仪式：只为自己，而不是为了完成任务。",
+      "练习区分“这是我的情绪，还是我接住了别人的情绪？”",
+      "在安全的空间里练习说出身体和内心的真实需要，例如“我现在需要安静”。",
+      "通过舞动、伸展、摇摆骨盆区域，让卡住的情绪慢慢松动。"
+    ],
+    gentleWords: "你对世界的感受力非常细腻。你不需要再把自己切成“乖、干净、懂事”的版本。允许自己一步一步，重新学会享受、感受和表达，你的身体会记得如何快乐。"
+  },
+
+  solar: {
+    name: "太阳神经丛 · Solar Plexus",
+    tagLine: "自信 · 意志 · 行动力",
+    tone: "你的能量焦点正在围绕“我能不能做到”“我值不值得”这些议题打转。",
+    mainClass:"solar",
+    summary: "太阳神经丛是“我是谁，我想把自己的力量放到哪里”的位置。当这里失衡时，要么过度控制，要么彻底放弃主导权。",
+    keywords:["自我价值","控制与无力","行动力","界限"],
+    youFeel:[
+      "你很容易为自己不满意，却很少真心地认可过自己。",
+      "做决定时容易摇摆，既怕做错，又怕被看不起。",
+      "一旦表现不好，你会在心里把自己骂得体无完肤。",
+      "你常常承担太多、做得很多，却觉得自己还是“不够”。"
+    ],
+    pattern:[
+      "在别人面前，你可能表现得很理性、很有主见，但私底下却经常怀疑自己。",
+      "有时候会突然失去动力，拖延、逃避，然后又因此更恨自己。",
+      "容易把他人的评价当成“命中注定的真相”。",
+      "在关系中，要么过度负责，要么完全放弃表达真实需求。"
+    ],
+    bodyHints:[
+      "胃部、上腹部、消化系统容易出问题。",
+      "压力大时，食欲出现极端变化（暴吃或完全不想吃）。",
+      "胸口、中上腹有压迫感或闷闷的不舒服。",
+      "容易感到疲惫，却又逼迫自己继续硬扛。"
+    ],
+    practice:[
+      "每天写下至少一件“我做得还不错”的小事，哪怕只是起床刷牙。",
+      "练习用“不”的能力：从很小的事情开始，比如“今天我不想回某个人的信息”。",
+      "在做决定时，问自己：“如果不考虑别人会怎么看，我真正想做的是什么？”",
+      "给自己设置一个小小的行动计划：只要做到 60 分就可以，而不是 100 分。"
+    ],
+    gentleWords: "你的力量并不是靠不断鞭打自己才会出现。真正稳定的自信，来自你慢慢学会看见——就算不完美，你依然有资格站在这里，有资格拥有自己的选择。"
+  },
+
+  heart: {
+    name: "心轮 · Heart Chakra",
+    tagLine: "爱与被爱 · 共情与界限",
+    tone: "你的能量很大程度正停留在“我是否值得被爱”“关系里我会不会再被伤害”。",
+    mainClass:"heart",
+    summary: "心轮是我们接收和流动爱的地方。当它受过伤又没有被好好照顾时，我们会在“渴望亲近”和“害怕受伤”之间来回拉扯。",
+    keywords:["亲密关系","孤独感","共情","自我心疼"],
+    youFeel:[
+      "你对别人的感受非常敏感，却很少真正照顾自己的感受。",
+      "即使身边有人，你仍然经常感到一种底层的孤独。",
+      "一旦感到被冷落或被忽视，你会立刻怀疑是不是自己哪里不够好。",
+      "你对“好好爱自己”这句话，很懂，但很难做。"
+    ],
+    pattern:[
+      "习惯先照顾别人，再考虑自己。",
+      "在关系里，很难完全放松，总觉得有一天对方会离开。",
+      "很难向别人开口说“我其实很难过、我需要你陪一下”。",
+      "过去的一些人和事，你嘴上说放下了，但身体和梦境还记得。"
+    ],
+    bodyHints:[
+      "胸口时不时有压迫、闷闷的感觉。",
+      "呼吸容易变浅，很少体验到那种“深深叹一口气”的轻松感。",
+      "肩颈经常僵硬，像背着看不见的重量。",
+      "在情绪很重的时候，心口会隐隐发紧。"
+    ],
+    practice:[
+      "对自己说一句以前从未有人好好对你说过的话，比如“你已经够好了”。",
+      "练习向一个安全的人表达一点点真实：比如“今天有点丧，不想逞强”。",
+      "做一个小小的“自我照顾清单”，写上 5 件真正让你舒服、踏实的事，并慢慢去实践。",
+      "当你又开始责怪自己时，停一下，问自己：“如果这是我在安慰一个朋友，我会怎么说？”"
+    ],
+    gentleWords: "你并不是“不值得被爱”，你只是太习惯用爱去包裹别人，而很少把爱落在自己身上。当你慢慢把那一点点温柔往自己心里挪的时候，你会发现，你本来就有被深深拥抱的资格。"
+  },
+
+  throat: {
+    name: "喉轮 · Throat Chakra",
+    tagLine: "表达 · 真相 · 边界",
+    tone: "你的能量明显停留在“我能不能说实话”“我有权说出真相吗”。",
+    mainClass:"throat",
+    summary: "喉轮是我们把内在世界翻译成外在语言与行动的位置。当这里堵住时，我们会不断吞回自己，直到连自己也忘了自己在想什么。",
+    keywords:["表达困难","害怕冲突","沉默委屈","创造性表达"],
+    youFeel:[
+      "你常常“话到嘴边又咽回去”，之后在脑内反复重播没说出口的对白。",
+      "你害怕表达真实需求会破坏关系，于是选择沉默。",
+      "当你终于说出口时，要么一股脑爆发，要么表达过于拐弯抹角。",
+      "你明明有很多想法，但总觉得自己“不够资格说”。"
+    ],
+    pattern:[
+      "在重要场合，你很容易紧张、失语，事后才想到自己本来可以说什么。",
+      "你习惯保护别人的感受，却牺牲了自己的真实感受。",
+      "你可能在文字、艺术、创作中更敢表达，而面对面时却变得内敛。",
+      "在被误解时，你常常选择“算了”，但心里会憋着。"
+    ],
+    bodyHints:[
+      "喉咙容易紧、干、卡住，或总想清嗓子。",
+      "颈部容易僵硬，感觉头和身体“断开”。",
+      "长时间说话会特别累，或对声音很敏感。",
+      "每次强忍着不说真话时，喉咙会更紧。"
+    ],
+    practice:[
+      "从非常小的真实开始练习，比如点餐时更清楚地表达自己想吃什么。",
+      "给自己写一封“永远不会寄出的信”，把那些不敢说的话写出来。",
+      "设定一个表达底线：在特别重要的事情上，允许自己说一次真心话。",
+      "每天朗读几分钟你喜欢的文字，让声音成为你与世界的连接器，而不是枷锁。"
+    ],
+    gentleWords: "你吞回去的每一句话，曾经都是你在努力保护关系的方式。现在，你可以慢慢练习另一个版本——保护关系的同时，也保护那个想说话的自己。"
+  },
+
+  thirdEye: {
+    name: "眉心轮 · Third Eye",
+    tagLine: "直觉 · 洞察 · 内在画面",
+    tone: "你的能量正在集中在“想太多 / 看得太多 / 感受太多信息却难以休息”的区域。",
+    mainClass:"thirdEye",
+    summary: "眉心轮是我们感知模式的中枢。当这里过度活跃或堵塞，我们不是看不见，就是看得太多、过度分析。",
+    keywords:["过度思考","直觉迟疑","幻灭感","洞察力"],
+    youFeel:[
+      "你的大脑几乎很少真正安静下来，总有很多画面和想法在运行。",
+      "做决定时，你能看到各种可能性，反而更难下决定。",
+      "你对人性、关系、世界有很强的洞察，但有时候这让你觉得疲惫。",
+      "你很容易在脑内预演一百种结果，却很难相信当下。"
+    ],
+    pattern:[
+      "你容易处在“头很忙、心很累、身体很困”的状态。",
+      "对于直觉，你既相信，又怀疑，害怕自己被“感觉”欺骗。",
+      "你可能会被形而上、灵性、深度话题吸引，又害怕自己走火入魔。",
+      "当你看见太多真相时，会突然对某些关系或环境产生强烈的幻灭感。"
+    ],
+    bodyHints:[
+      "容易头胀、偏头痛、眼睛酸胀或干涩。",
+      "长时间用脑后，感觉整个人“浮在头部”。",
+      "对光、声音、信息流过度敏感，需要频繁“逃离互联网”。",
+      "睡前大脑特别清醒，难以入睡。"
+    ],
+    practice:[
+      "睡前刻意给自己一个“关机仪式”：关灯前 10 分钟只专注在呼吸上。",
+      "把纠结的决定写在纸上，列出最多 3 个真实在乎的标准，减少信息噪音。",
+      "观察直觉：先记录，不急着判断对错，让自己重新建立对内在感受的信任。",
+      "减少一次性信息摄入量：主动为自己的大脑设定“流量限制”。"
+    ],
+    gentleWords: "你不是“想太多的人”，你只是比大多数人看得更深、更远。学习的是：什么时候要看，什么时候可以轻轻闭上眼睛，让生命自己往前走一段。"
+  },
+
+  crown: {
+    name: "顶轮 · Crown Chakra",
+    tagLine: "连接感 · 生命意义 · 灵性归属",
+    tone: "你的能量正在对“我存在的意义是什么”“我和这个世界的关系是什么”发出提问。",
+    mainClass:"crown",
+    summary: "顶轮是我们与“更大的东西”的连接点：宇宙、生命、自我之外的那部分。当这里干涸时，我们会觉得孤立、迷茫、失去方向感。",
+    keywords:["迷茫感","存在意义","灵性孤独","内在安稳"],
+    youFeel:[
+      "你时不时会在某个瞬间冒出“人生到底在干嘛”的念头。",
+      "外在事情可以忙得满满，但内心仍然觉得空。",
+      "你很少感觉被某种力量托住，更习惯“只有我自己靠得住”。",
+      "和人群在一起时，也常觉得有一道看不见的隔层。"
+    ],
+    pattern:[
+      "你可能曾经相信过某些东西（人、关系、信仰、理想），后来却经历幻灭。",
+      "你对空洞的正能量说教非常敏感，宁愿真实的迷茫，也不要虚假的鼓励。",
+      "你会在深夜刷各种灵性、哲学、心理内容，想从中找到一点方向。",
+      "你渴望找到属于自己的“精神同伴”或“灵魂部落”。"
+    ],
+    bodyHints:[
+      "容易出现“人很累，精神更累”的状态。",
+      "睡眠质量不稳定，要么做很多梦，要么难以入睡。",
+      "偶尔会有轻微的眩晕、飘忽感，像站不稳。",
+      "在高度焦虑时，感觉头顶和身体“断线”。"
+    ],
+    practice:[
+      "给自己创造一点点“静止的时间”，哪怕每天只有 3 分钟，只是安静坐着。",
+      "写下现在让你仍然愿意相信的少数几样东西（哪怕只是“一杯热水”“某首歌”）。",
+      "允许自己暂时不知道大答案，只专注在“此刻我能为自己做的一件小善意”。",
+      "尝试和一两位频率接近的人分享这些想法，哪怕只是一句“你会不会也有这种感觉？”"
+    ],
+    gentleWords: "你之所以会问这些问题，并不是你很丧，而是你的灵魂正在长大。你不需要立刻找到所有答案，只要在每一个真实的当下，对自己诚实一点点，你就已经在路上了。"
+  }
+};
+
+function render(){
+  const chakra = getChakraFromQuery();
+  const d = DATA[chakra] || DATA.root;
+
+  const root = document.getElementById("report-root");
+
+  const header = `
+    <div class="badge">
+      <span class="badge-dot"></span>
+      CYBERSHAMANESS · 脉轮能量能力测试结果
+    </div>
+    <span class="main-tag ${d.mainClass}">
+      <span class="dot"></span>
+      ${d.name}
+    </span>
+    <h1>${d.tagLine}</h1>
+    <p class="sub">${d.summary}</p>
+    <div class="pill-row">
+      ${d.keywords.map(k=>`<span class="pill">${k}</span>`).join("")}
+    </div>
+    <p class="sub">当前你的能量格局中，这一轮的声音最响、存在感最强，也最值得被你温柔地看见。</p>
+  `;
+
+  const sec1 = `
+    <div class="section">
+      <h2>① 你可能正在经历的内在感受</h2>
+      ${d.youFeel.map(p=>`<p>${p}</p>`).join("")}
+    </div>
+  `;
+
+  const sec2 = `
+    <div class="section">
+      <h2>② 这种脉轮状态在生活中的具体表现</h2>
+      <ul>
+        ${d.pattern.map(p=>`<li>${p}</li>`).join("")}
+      </ul>
+    </div>
+  `;
+
+  const sec3 = `
+    <div class="section">
+      <h2>③ 身体在帮你说话：可能出现的信号</h2>
+      <ul>
+        ${d.bodyHints.map(p=>`<li>${p}</li>`).join("")}
+      </ul>
+    </div>
+  `;
+
+  const sec4 = `
+    <div class="section">
+      <h2>④ 你可以立刻开始的小练习</h2>
+      ${d.practice.map(p=>`<p>${p}</p>`).join("")}
+    </div>
+  `;
+
+  const sec5 = `
+    <div class="section">
+      <h2>⑤ 写给现在的你的一小段话</h2>
+      <p class="highlight">${d.gentleWords}</p>
+      <div class="btn-row">
+        <a class="btn btn-main" href="index.html">🔁 再测一次 / 让朋友也测测</a>
+        <a class="btn btn-ghost" href="javascript:window.scrollTo({top:0,behavior:'smooth'});">↑ 回到顶部重读要点</a>
+      </div>
+    </div>
+  `;
+
+  root.innerHTML = header + sec1 + sec2 + sec3 + sec4 + sec5;
+}
+
+render();
+</script>
+</body>
+</html>
